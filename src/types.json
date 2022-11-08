@@ -1,0 +1,60 @@
+{
+    "$id": "types",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "FetchWebEntity": {
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "url"
+            ],
+            "type": "object"
+        },
+        "GenericObjectType": {
+            "additionalProperties": {
+                "$ref": "types#/definitions/GenericType"
+            },
+            "type": "object"
+        },
+        "GenericType": {
+            "anyOf": [
+                {
+                    "$ref": "types#/definitions/GenericObjectType"
+                },
+                {
+                    "items": {
+                        "$ref": "types#/definitions/GenericType"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": [
+                        "string",
+                        "number",
+                        "boolean"
+                    ]
+                }
+            ]
+        },
+        "GotClientType": {
+            "type": "object"
+        },
+        "GotResponse": {
+            "properties": {
+                "data": {},
+                "status": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "data",
+                "status"
+            ],
+            "type": "object"
+        }
+    }
+}
+
